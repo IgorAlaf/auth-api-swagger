@@ -10,7 +10,7 @@ router.post(
   '/registration',
   body('email')
     .isEmail()
-    .isLength({ min: 2, max: 50 })
+    .isLength({ min: 6, max: 50 })
     .matches(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/),
   body('firstName')
     .isString()
@@ -31,7 +31,7 @@ router.post(
   '/login',
   body('email')
     .isEmail()
-    .isLength({ min: 2, max: 50 })
+    .isLength({ min: 6, max: 50 })
     .matches(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/),
   body('password').isLength({ min: 6, max: 50 }),
   login
@@ -42,7 +42,7 @@ router.put(
   '/account/:id/edit',
   body('email')
     .isEmail()
-    .isLength({ min: 2, max: 50 })
+    .isLength({ min: 6, max: 50 })
     .matches(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/),
   body('firstName')
     .isString()
