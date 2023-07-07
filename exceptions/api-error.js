@@ -13,7 +13,7 @@ export class ApiError extends Error {
   static badRequest(message, errors = []) {
     return new ApiError(400, message, errors)
   }
-  static notFounded(message) {
-    return new ApiError(404, message)
+  static notFounded(message, errors = []) {
+    return new ApiError(404, message, errors)
   }
 }

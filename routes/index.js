@@ -2,8 +2,10 @@ import { Router } from 'express'
 import userContoller from '../controllers/user-contoller.js'
 import { body } from 'express-validator'
 import { authMiddleware } from '../middlewares/auth-middleware.js'
+
 const router = new Router()
 const { registration, login, logout, refresh, editAccount } = userContoller
+
 router.post(
   '/registration',
   body('email')

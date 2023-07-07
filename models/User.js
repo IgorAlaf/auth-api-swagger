@@ -1,6 +1,5 @@
 import sequelize from '../db/db.config.js'
 import { Model, DataTypes } from 'sequelize'
-import Token from './Token.js'
 class User extends Model {}
 
 User.init(
@@ -34,7 +33,5 @@ User.init(
   },
   { sequelize, modelName: 'users' }
 )
-
-// User.hasOne(Token)
 
 export default User

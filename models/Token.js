@@ -1,6 +1,5 @@
 import sequelize from '../db/db.config.js'
 import { Model, DataTypes } from 'sequelize'
-import User from './User.js'
 class Token extends Model {}
 
 Token.init(
@@ -20,7 +19,5 @@ Token.init(
   },
   { sequelize, modelName: 'refreshToken' }
 )
-
-// Token.belongsTo(User)
 
 export default Token

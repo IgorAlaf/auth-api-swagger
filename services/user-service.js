@@ -9,7 +9,15 @@ class UserService {
     const candidate = await User.findOne({ where: { email: email } })
     if (candidate) {
       throw ApiError.badRequest(
-        `Candidate is already exists with the same email ${email}`
+        `Candidate is already exists with the same email ${email}`,
+        [
+          {
+            type: 'field',
+            location: 'email',
+            msg: 'Candidate is already exists with the same email ${email}',
+            path: `${process.env.API_URL}/api/registration`
+          }
+        ]
       )
     }
     const hashPassword = await bcrypt.hash(password, 3)
@@ -31,11 +39,25 @@ class UserService {
   async login(email, password) {
     const user = await User.findOne({ where: { email } })
     if (!user) {
-      throw ApiError.badRequest('User with the same email not founded')
+      throw ApiError.badRequest('User with the same email not founded', [
+        {
+          type: 'field',
+          location: 'email',
+          msg: 'User with the same email not founded',
+          path: `${process.env.API_URL}/api/login`
+        }
+      ])
     }
     const isPassEquals = await bcrypt.compare(password, user.password)
     if (!isPassEquals) {
-      throw ApiError.badRequest('Wrong password')
+      throw ApiError.badRequest('Wrong password', [
+        {
+          type: 'field',
+          location: 'password',
+          msg: 'Wrong password',
+          path: `${process.env.API_URL}/api/login`
+        }
+      ])
     }
     const userDto = new UserDto(user)
     const tokens = generateTokens({ ...userDto })
@@ -62,13 +84,35 @@ class UserService {
     return { ...tokens, user: userDto }
   }
   async edit(firstName, lastName, city, email, id) {
+    const checkUser = await User.findOne({ where: { email } })
+    if (checkUser) {
+      throw ApiError.badRequest(
+        `Candidate with email ${email} already exists`,
+        [
+          {
+            type: 'field',
+            location: 'email',
+            msg: `Candidate with email ${email} already exists`,
+            path: `${process.env.API_URL}/api/account/${id}/edit`
+          }
+        ]
+      )
+    }
     await User.update(
       { firstName, lastName, city, email },
       { where: { userId: id } }
     )
+
     const newUser = await User.findOne({ where: { userId: id } })
     if (!newUser) {
-      throw ApiError.notFounded('Not found user')
+      throw ApiError.notFounded('Not found user', [
+        {
+          type: 'field',
+          location: 'userId',
+          msg: 'Not found this user',
+          path: `${process.env.API_URL}/api/account/${id}/edit`
+        }
+      ])
     }
     const userDto = new UserDto(newUser)
     return { user: userDto }
