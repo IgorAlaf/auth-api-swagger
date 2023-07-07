@@ -1,9 +1,9 @@
 ---
-openapi: '3.0.0'
+openapi: "3.0.0"
 info:
-  description: 'This service control auth'
-  title: 'Authorization'
-  version: '1.0.0'
+  description: "This service control auth"
+  title: "Authorization"
+  version: "1.0.0"
 paths:
   /api/registration:
     post:
@@ -11,15 +11,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SignUpDto'
-        description: 'Input data'
+              $ref: "#/components/schemas/SignUpDto"
+        description: "Input data"
         required: true
-      description: 'User registration'
+      description: "User registration"
       tags:
-        - 'Authorization (user)'
+        - "Authorization (user)"
       responses:
         201:
-          description: 'User authorization data'
+          description: "User authorization data"
           headers:
             Set-Cookie:
               description: >
@@ -30,35 +30,35 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthDto'
+                $ref: "#/components/schemas/AuthDto"
         400:
-          description: 'The request failed'
+          description: "The request failed"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
+                $ref: "#/components/schemas/BadRequest"
         404:
-          description: 'Not founded'
+          description: "Not founded"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFounded'
+                $ref: "#/components/schemas/NotFounded"
         500:
-          description: ' Internal Server Error'
+          description: " Internal Server Error"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InternalError'
+                $ref: "#/components/schemas/InternalError"
   /api/login:
     post:
       requestBody:
-        $ref: '#/components/requestBodies/SignInDto'
-      description: 'User authorization'
+        $ref: "#/components/requestBodies/SignInDto"
+      description: "User authorization"
       tags:
-        - 'Authorization (user)'
+        - "Authorization (user)"
       responses:
         201:
-          description: 'User authorization data'
+          description: "User authorization data"
           headers:
             Set-Cookie:
               description: >
@@ -69,32 +69,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthDto'
+                $ref: "#/components/schemas/AuthDto"
         400:
-          description: 'The request failed'
+          description: "The request failed"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
+                $ref: "#/components/schemas/BadRequest"
         404:
-          description: 'Not founded'
+          description: "Not founded"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFounded'
+                $ref: "#/components/schemas/NotFounded"
         500:
-          description: ' Internal Server Error'
+          description: " Internal Server Error"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InternalError'
+                $ref: "#/components/schemas/InternalError"
   /api/logout:
     get:
       security:
         - JWT: []
         - SecurityAuth: []
       tags:
-        - 'Authorization (user)'
+        - "Authorization (user)"
       responses:
         201:
           description: >
@@ -102,39 +102,39 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SuccessDto'
+                $ref: "#/components/schemas/SuccessDto"
 
         400:
-          description: 'The request failed'
+          description: "The request failed"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
+                $ref: "#/components/schemas/BadRequest"
         401:
-          description: 'Unauthorized'
+          description: "Unauthorized"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Unauthorized'
+                $ref: "#/components/schemas/Unauthorized"
         404:
-          description: 'Not founded'
+          description: "Not founded"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFounded'
+                $ref: "#/components/schemas/NotFounded"
         500:
-          description: ' Internal Server Error'
+          description: " Internal Server Error"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InternalError'
+                $ref: "#/components/schemas/InternalError"
   /api/refresh:
     post:
       security:
         - SecurityAuth: []
-      description: 'Get refreshToken'
+      description: "Get refreshToken"
       tags:
-        - 'Authorization (user)'
+        - "Authorization (user)"
       responses:
         200:
           description: >
@@ -149,31 +149,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthDto'
+                $ref: "#/components/schemas/AuthDto"
         400:
-          description: 'The request failed'
+          description: "The request failed"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
+                $ref: "#/components/schemas/BadRequest"
         401:
-          description: 'Unauthorized'
+          description: "Unauthorized"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Unauthorized'
+                $ref: "#/components/schemas/Unauthorized"
         404:
-          description: 'Not founded'
+          description: "Not founded"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFounded'
+                $ref: "#/components/schemas/NotFounded"
         500:
-          description: ' Internal Server Error'
+          description: " Internal Server Error"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InternalError'
+                $ref: "#/components/schemas/InternalError"
   /api/account/{id}/edit:
     put:
       parameters:
@@ -192,271 +192,271 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserDto'
-        description: 'Input data'
+              $ref: "#/components/schemas/UserDto"
+        description: "Input data"
         required: true
-      description: 'Change user data'
+      description: "Change user data"
       tags:
-        - 'Change data (user)'
+        - "Change data (user)"
       responses:
         200:
-          description: 'New user data'
+          description: "New user data"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserDto'
+                $ref: "#/components/schemas/UserDto"
         400:
-          description: 'The request failed'
+          description: "The request failed"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
+                $ref: "#/components/schemas/BadRequest"
         401:
-          description: 'Unauthorized'
+          description: "Unauthorized"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Unauthorized'
+                $ref: "#/components/schemas/Unauthorized"
         404:
-          description: 'Not founded'
+          description: "Not founded"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFounded'
+                $ref: "#/components/schemas/NotFounded"
         500:
-          description: ' Internal Server Error'
+          description: " Internal Server Error"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InternalError'
+                $ref: "#/components/schemas/InternalError"
 tags:
-  - name: 'Authorization (user)'
-    description: 'Functions for user authorization'
-  - name: 'Change data (user)'
-    description: 'Functions for change user data'
+  - name: "Authorization (user)"
+    description: "Functions for user authorization"
+  - name: "Change data (user)"
+    description: "Functions for change user data"
 servers:
-  - url: 'http://localhost:5000'
-  - url: 'https://localhost:5000'
+  - url: "http://localhost:5000"
+  - url: "https://localhost:5000"
 components:
   requestBodies:
     SignInDto:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SignInDto'
-      description: 'Input data'
+            $ref: "#/components/schemas/SignInDto"
+      description: "Input data"
       required: true
     LogoutDto:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/LogoutDto'
-      description: 'Input data'
+            $ref: "#/components/schemas/LogoutDto"
+      description: "Input data"
       required: true
   securitySchemes:
     SecurityAuth:
-      type: 'apiKey'
-      in: 'cookie'
-      name: 'refreshToken'
-      description: ' token'
+      type: "apiKey"
+      in: "cookie"
+      name: "refreshToken"
+      description: " token"
     JWT:
-      type: 'apiKey'
-      in: 'header'
-      name: 'Authorization'
-      description: 'Access token'
+      type: "apiKey"
+      in: "header"
+      name: "Authorization"
+      description: "Access token"
 
   schemas:
     AuthDto:
       required:
-        - 'accessToken'
-        - 'refreshToken'
-        - 'user'
+        - "accessToken"
+        - "refreshToken"
+        - "user"
       properties:
         accessToken:
-          type: 'string'
-          example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJJZ29yIiwibGFzdE5hbWUiOiJBbGFmaW5vdmZzZmFzZGFmIiwiZW1haWwiOiJpZ29zNTMyMDA2QGdtYWlsLmNvbSIsImNpdHkiOiJNb3Njb3ciLCJpZCI6OCwiaWF0IjoxNjg4NjM5NzkyLCJleHAiOjE2ODg2NDA2OTJ9.MXFV2iRTI_h6zh2hC_aRU8qU2gqmprJf90tmUcxap_Y'
-          description: ''
+          type: "string"
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJJZ29yIiwibGFzdE5hbWUiOiJBbGFmaW5vdmZzZmFzZGFmIiwiZW1haWwiOiJpZ29zNTMyMDA2QGdtYWlsLmNvbSIsImNpdHkiOiJNb3Njb3ciLCJpZCI6OCwiaWF0IjoxNjg4NjM5NzkyLCJleHAiOjE2ODg2NDA2OTJ9.MXFV2iRTI_h6zh2hC_aRU8qU2gqmprJf90tmUcxap_Y"
+          description: ""
         refresh_token:
-          type: 'string'
-          example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJJZ29yIiwibGFzdE5hbWUiOiJBbGFmaW5vdmZzZmFzZGFmIiwiZW1haWwiOiJpZ29zNTMyMDA2QGdtYWlsLmNvbSIsImNpdHkiOiJNb3Njb3ciLCJpZCI6OCwiaWF0IjoxNjg4NjM5NzkyLCJleHAiOjE2OTEyMzE3OTJ9.ALlhAP6B2Y0_gFFx_ZQgZFaCVF2KcLE7HffQVJSciN8'
-          description: ''
+          type: "string"
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJJZ29yIiwibGFzdE5hbWUiOiJBbGFmaW5vdmZzZmFzZGFmIiwiZW1haWwiOiJpZ29zNTMyMDA2QGdtYWlsLmNvbSIsImNpdHkiOiJNb3Njb3ciLCJpZCI6OCwiaWF0IjoxNjg4NjM5NzkyLCJleHAiOjE2OTEyMzE3OTJ9.ALlhAP6B2Y0_gFFx_ZQgZFaCVF2KcLE7HffQVJSciN8"
+          description: ""
         user:
-          $ref: '#/components/schemas/UserDto'
+          $ref: "#/components/schemas/UserDto"
     SignInDto:
       required:
-        - 'email'
-        - 'password'
+        - "email"
+        - "password"
       properties:
         email:
-          type: 'string'
-          example: 'textmail@gmail.com'
+          type: "string"
+          example: "textmail@gmail.com"
           minLength: 2
           maxLength: 50
           pattern: '^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-          description: ''
+          description: ""
         password:
-          type: 'string'
-          example: 'hwp234klasdf'
+          type: "string"
+          example: "hwp234klasdf"
           minLength: 6
           maxLength: 50
-          description: ''
+          description: ""
     SignUpDto:
       required:
-        - 'firstName'
-        - 'lastName'
-        - 'city'
-        - 'email'
-        - 'password'
+        - "firstName"
+        - "lastName"
+        - "city"
+        - "email"
+        - "password"
       properties:
         firstName:
-          type: 'string'
-          example: 'Misha'
-          pattern: '^[A-Za-z]*$'
+          type: "string"
+          example: "Misha"
+          pattern: "^[A-Za-z]*$"
           minLength: 2
           maxLength: 50
-          description: ''
+          description: ""
         lastName:
-          type: 'string'
-          example: 'Ivanov'
-          pattern: '^[A-Za-z]*$'
+          type: "string"
+          example: "Ivanov"
+          pattern: "^[A-Za-z]*$"
           minLength: 2
           maxLength: 50
-          description: ''
+          description: ""
         city:
-          type: 'string'
-          example: 'Bangkok'
-          pattern: '^[A-Za-z]*$'
+          type: "string"
+          example: "Bangkok"
+          pattern: "^[A-Za-z]*$"
           minLength: 2
           maxLength: 50
-          description: ''
+          description: ""
         email:
-          type: 'string'
-          example: 'testmail@gmail.com'
+          type: "string"
+          example: "testmail@gmail.com"
           minLength: 2
           maxLength: 50
           pattern: '^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-          description: ''
+          description: ""
         password:
           minLength: 6
           maxLength: 50
-          type: 'string'
-          example: 'hwp234klasdf'
-          description: ''
+          type: "string"
+          example: "hwp234klasdf"
+          description: ""
 
     SuccessDto:
       required:
-        - 'success'
+        - "success"
       properties:
         success:
-          type: 'boolean'
-          description: ''
+          type: "boolean"
+          description: ""
     BadRequest:
       required:
-        - 'message'
-        - 'errors'
+        - "message"
+        - "errors"
       properties:
         message:
-          type: 'string'
+          type: "string"
           maxLength: 50
-          example: 'Bad request'
-          description: 'Bad request(400)'
+          example: "Bad request"
+          description: "Bad request(400)"
         errors:
-          type: 'array'
+          type: "array"
           items:
-            $ref: '#/components/schemas/FieldError'
+            $ref: "#/components/schemas/FieldError"
     Unauthorized:
       required:
-        - 'message'
+        - "message"
       properties:
         message:
-          type: 'string'
+          type: "string"
           maxLength: 50
-          example: 'User not authorized'
-          description: 'Unauthorized(401)'
+          example: "User not authorized"
+          description: "Unauthorized(401)"
     NotFounded:
       required:
-        - 'message'
-        - 'errors'
+        - "message"
+        - "errors"
       properties:
         message:
-          type: 'string'
+          type: "string"
           maxLength: 50
-          example: 'NotFounded'
-          description: 'NotFounded(404)'
+          example: "NotFounded"
+          description: "NotFounded(404)"
         errors:
-          type: 'array'
+          type: "array"
           items:
-            $ref: '#/components/schemas/FieldError'
+            $ref: "#/components/schemas/FieldError"
     InternalError:
       required:
-        - 'message'
-        - 'errors'
+        - "message"
+        - "errors"
       properties:
         message:
-          type: 'string'
+          type: "string"
           maxLength: 50
-          example: 'InternalError'
-          description: 'InternalError(500)'
+          example: "InternalError"
+          description: "InternalError(500)"
         errors:
-          type: 'array'
+          type: "array"
           items:
-            $ref: '#/components/schemas/FieldError'
+            $ref: "#/components/schemas/FieldError"
     FieldError:
       required:
-        - 'msg'
-        - 'path'
-        - 'location'
-        - 'type'
+        - "msg"
+        - "path"
+        - "location"
+        - "type"
       properties:
         type:
-          type: 'string'
+          type: "string"
           maxLength: 50
-          example: 'field'
-          description: ''
+          example: "field"
+          description: ""
         msg:
-          type: 'string'
+          type: "string"
           maxLength: 50
-          example: 'Something Error'
-          description: ''
+          example: "Something Error"
+          description: ""
         path:
-          type: 'string'
+          type: "string"
           maxLength: 50
-          example: 'http://localhost:5000/api/app.js'
-          description: ''
+          example: "http://localhost:5000/api/app.js"
+          description: ""
         location:
-          type: 'string'
+          type: "string"
           maxLength: 50
           example: body
-          description: ''
+          description: ""
     UserDto:
       required:
-        - 'firstName'
-        - 'lastName'
-        - 'email'
-        - 'city'
-        - 'id'
+        - "firstName"
+        - "lastName"
+        - "email"
+        - "city"
+        - "id"
       properties:
         id:
-          type: 'number'
+          type: "number"
           minimum: 1
           example: 1
-          description: ''
+          description: ""
         firstName:
-          type: 'string'
+          type: "string"
           minLength: 2
           maxLength: 50
-          pattern: '^[A-Za-z]*$'
-          example: 'Misha'
-          description: ''
+          pattern: "^[A-Za-z]*$"
+          example: "Misha"
+          description: ""
         lastName:
-          type: 'string'
-          example: 'Ivanov'
-          description: ''
+          type: "string"
+          example: "Ivanov"
+          description: ""
         email:
-          type: 'string'
-          example: 'textmail@gmail.com'
-          description: ''
+          type: "string"
+          example: "textmail@gmail.com"
+          description: ""
         city:
-          type: 'string'
-          example: 'Bangkok'
-          description: ''
+          type: "string"
+          example: "Bangkok"
+          description: ""
