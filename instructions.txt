@@ -1,0 +1,20 @@
+Для инициализации приложения - npm i 
+Для запуска приложение - npm start (yarn start)
+
+
+SWAGGER - http://localhost:5000/api/docs
+
+После регистрации или логина во вкладе Authorize:
+
+1) SecurityAuth(apiKey) : ввести 'refreshToken(который пришел при регистрации или логина)'(без ковычек)
+
+
+
+пример : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJNaXNoYSIsImxhc3ROYW1lIjoiSXZhbm92IiwiZW1haWwiOiJpZ29zMjAwNkBnbWFpbC5jb20iLCJjaXR5IjoiQmFuZ2tvayIsImlkIjoyLCJpYXQiOjE2ODg3MTA2NjcsImV4cCI6MTY5MTMwMjY2N30.CLNyezLoqgBXTCHylD4ZGtI0z4ZmjdvuDql-9FYawLk
+
+
+2) JWT(apiKey) : ввести 'bearer accessToken(который пришел при регистрации или логина )'(без ковычек)
+
+пример : bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJNaXNoYSIsImxhc3ROYW1lIjoiSXZhbm92IiwiZW1haWwiOiJpZ29zMjAwNkBnbWFpbC5jb20iLCJjaXR5IjoiQmFuZ2tvayIsImlkIjoyLCJpYXQiOjE2ODg3MTA2NjcsImV4cCI6MTY4ODcxMTU2N30.v6Y8TH8z3eqKncUuVSvxwsgl_d2k0EGeuwRqkYP_2xY
+
+Все остальные функции выполняются по примеру в swagger
