@@ -136,7 +136,7 @@ paths:
       tags:
         - 'Authorization (user)'
       responses:
-        200:
+        201:
           description: >
             The new session refresh token is returned in a cookie named `RefreshToken`. You need to include this cookie in subsequent requests.
           headers:
