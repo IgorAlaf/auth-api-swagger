@@ -235,8 +235,8 @@ tags:
   - name: 'Change data (user)'
     description: 'Functions for change user data'
 servers:
-  - url: 'http://localhost:5000'
-  - url: 'https://localhost:5000'
+  - url: 'http://2.59.41.2:5000'
+  - url: 'https://2.59.41.2:5000'
 components:
   requestBodies:
     SignInDto:
