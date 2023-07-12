@@ -7,15 +7,15 @@ Token.init(
     tokenId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
 
     refreshToken: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     userId: {
-      type: DataTypes.INTEGER
-    }
+      type: DataTypes.INTEGER,
+    },
   },
   { sequelize, modelName: 'refreshToken' }
 )
