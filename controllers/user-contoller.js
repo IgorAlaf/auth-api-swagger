@@ -58,7 +58,6 @@ class UserController {
   }
   async refresh(req, res, next) {
     try {
-      console.log(req.cookies)
       const { refreshToken } = req.cookies
       const userData = await userService.refresh(refreshToken)
       res.cookie('refreshToken', userData.refreshToken, {
@@ -78,13 +77,15 @@ class UserController {
         return next(ApiError.badRequest('Error validation', errors.array()))
       }
       const id = req.params.id
-      const { firstName, lastName, city, email } = req.body
+      const { firstName, lastName, city, email, password, newPass } = req.body
       const userData = await userService.edit(
         firstName,
         lastName,
         city,
         email,
-        id
+        id,
+        password,
+        newPass
       )
       res.json(userData)
     } catch (e) {

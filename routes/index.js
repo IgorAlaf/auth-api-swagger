@@ -36,7 +36,7 @@ router.post(
   body('password').isLength({ min: 6, max: 50 }),
   login
 )
-router.get('/logout', authMiddleware, logout)
+router.get('/logout', logout)
 router.post('/refresh', refresh)
 router.put(
   '/account/:id/edit',

@@ -192,7 +192,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserDto'
+              $ref: '#/components/schemas/EditUserDto'
         description: 'Input data'
         required: true
       description: 'Change user data'
@@ -469,3 +469,56 @@ components:
           pattern: '^[A-Za-z]*$'
           example: 'Bangkok'
           description: ''
+    EditDto:
+      required:
+        - 'firstName'
+        - 'lastName'
+        - 'email'
+        - 'password'
+        - 'newPass'
+        - 'city'
+      properties:
+        firstName:
+          type: 'string'
+          minLength: 2
+          maxLength: 50
+          pattern: '^[A-Za-z]*$'
+          example: 'Misha'
+          description: ''
+        lastName:
+          type: 'string'
+          example: 'Ivanov'
+          minLength: 2
+          maxLength: 50
+          pattern: '^[A-Za-z]*$'
+          description: ''
+        email:
+          type: 'string'
+          example: 'textmail@gmail.com'
+          minLength: 6
+          maxLength: 50
+          pattern: '^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+          description: ''
+        pasword:
+          type: 'stirng'
+          example: 'qwerJbo2'
+          minLength: 6
+          description: ''
+        newPass:
+          type: 'string'
+          example: 'new-pass2342'
+          minLength: 6
+          description: ''
+        city:
+          type: 'string'
+          minLength: 2
+          maxLength: 50
+          pattern: '^[A-Za-z]*$'
+          example: 'Bangkok'
+          description: ''
+    EditUserDto:
+      required:
+        - 'user'
+      properties:
+        user:
+          $ref: '#/components/schemas/UserDto'
